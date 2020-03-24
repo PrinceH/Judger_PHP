@@ -11,7 +11,13 @@ $ composer require princeh/judger_php -vvv
 
 ## Usage
 
-TODO
+此拓展基于青岛开源的沙盒
+必须要装swoole 且运行在协程环境下
+最好hook shell_exec在底层会自动进行协程的调度
+```php
+\Swoole\Coroutine\Co::set(['hook_flags' => SWOOLE_HOOK_BLOCKING_FUNCTION]);
+```
+
 
 ## Contributing
 
