@@ -67,11 +67,8 @@ class Judger
 
     public function run() : array
     {
-        $process = new Process(function (Process $worker) {
-            $worker->exec(Val::$so_path,$this->proc_args);
-        }, true, 1, 1); // 需要启用标准输入输出重定向
-        $process->start();
-        $result = $process->read();
+        $cmd = Val::$so_path ." " .implode(" ",$this->proc_args);
+        $result = shell_exec($cmd);
         return json_decode($result,True);
     }
 }
